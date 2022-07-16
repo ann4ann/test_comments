@@ -1,0 +1,53 @@
+.comment {
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgb(205, 205, 211) 0%,
+    rgb(205, 205, 238) 35%,
+    rgb(231, 248, 252) 100%
+  );
+  margin-bottom: 20px;
+  border-radius: 30px;
+  padding: 14px 18px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    > * {
+      display: inline-block;
+    }
+  }
+  &__title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 0;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+  &__link {
+    cursor: pointer;
+    min-width: 30%;
+    text-align: right;
+  }
+  &__subtitle {
+    text-transform: uppercase;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 6px;
+  }
+  &__content {
+    margin: 0;
+    font-weight: 200;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  &__email{
+    color: #666;
+    text-align: right;
+  }
+}

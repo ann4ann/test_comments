@@ -1,0 +1,20 @@
+.field-wrapper {
+  margin-bottom: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  > label {
+    display: block;
+    margin-left: 15px;
+  }
+
+  &__control {
+    border: 1px solid #ccc;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 20px;
+    background: 0 0;
+  }
+}
