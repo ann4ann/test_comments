@@ -15,40 +15,22 @@ const Comments = () => {
     setSearchEmail(e.target.value);
   };
 
-  // useEffect(() => {
-  //   if (searchEmail) {
-  //     axios
-  //       .get(
-  //         "https://jsonplaceholder.typicode.com/comments?_limit=10&_page=${currentPage}"
-  //       )
-  //       .then((res) => {});
-  //   }
-  // }, [searchEmail]);
-
-  // useEffect(() => {
-  //   if (fetching) {
-  //     axios
-  //       .get(
-  //         `https://jsonplaceholder.typicode.com/comments?_limit=10&_page=${currentPage}`
-  //       )
-  //       .then((res) => {
-  //         setTotalCount(res.headers["x-total-count"]);
-  //         setComments([...comments, ...res.data]);
-  //         setCurrentPage((prevState) => prevState + 1);
-  //         // console.log(comments);
-  //       })
-  //       .finally(() => setFetching(false));
-  //   }
-  // }, [fetching]);
+  useEffect(() => {
+    setFetching(true);
+    setTotalCount(1);
+    setComments([]);
+    setCurrentPage(1);
+  }, [searchEmail]);
 
   const requestString = () => {
     if (searchEmail) {
-      return `https://jsonplaceholder.typicode.com/comments?$search=contain(email,'${searchEmail}')_limit=10&_page=${currentPage}`;
+      return `https://jsonplaceholder.typicode.com/comments?email_like=${searchEmail}&_limit=10&_page=${currentPage}`;
     }
     return `https://jsonplaceholder.typicode.com/comments?_limit=10&_page=${currentPage}`;
   };
+
   useEffect(() => {
-    if (fetching || searchEmail) {
+    if (fetching) {
       axios
         .get(requestString())
         .then((res) => {
@@ -57,10 +39,11 @@ const Comments = () => {
           setCurrentPage((prevState) => prevState + 1);
           console.log(requestString());
         })
-        .finally(() => setFetching(false));
-        console.log("he")
+        .finally(() => {
+          setFetching(false);
+        });
     }
-  }, [fetching, searchEmail]);
+  }, [fetching]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);

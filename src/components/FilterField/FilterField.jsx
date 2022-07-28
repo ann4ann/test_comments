@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styles from "./FilterField.module.scss";
 
-const FilterField = ({handleChange, value, handleClick}) => {
-
+const FilterField = ({ handleChange, value, handleClick }) => {
   return (
     <div>
       <div className={styles["field-wrapper"]}>
